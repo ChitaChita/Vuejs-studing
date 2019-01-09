@@ -1,0 +1,30 @@
+<!DOCTYPE>
+<html>
+    <title>Vue app</title>
+    <script src="https://unpkg.com/vue@2.5.17"></script>
+
+    <div id="app">
+        <!-- コンテンツありでコンポーネントを設置 -->
+        <my-button>送信する</my-button>
+        <!-- コンテンツなしでコンポーネントを設置 -->
+        <my-button></my-button>
+    </div>
+</html>
+
+<script>
+var MyButton = {
+    template: `
+        <button>
+            <!-- 親コンポーネントで渡されたコンテンツに差し替えられる -->
+            <slot>OK</slot>
+        </button>
+    `
+}
+
+new Vue({
+    el: '#app',
+    components: {
+        MyButton: MyButton
+    }
+})
+</script>
