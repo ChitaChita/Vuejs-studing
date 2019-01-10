@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<title>Vue app</title>
+<script src="https://unpkg.com/vue@2.5.17"></script>
+
+<div id="app">
+    <img v-fallback-image src="./logo2.png" :alt="altText">
+</div>
+
+<script>
+    Vue.directive('fallback-image',{
+        bind: function(el, binding){
+            console.log('bind', binding)
+            el.addEventListener('error', function(){
+                el.src='https://jp.vuejs.org/images/logo.png'
+            })
+        },
+        update: function(el, binding) {
+            console.log('update', binding)
+        }
+    })
+
+    var vm = new Vue({
+        el: '#app',
+        data: function() {
+            return {
+                altText: 'logo'
+            }
+        }
+    })
+</script>

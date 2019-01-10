@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<title>Vue app</title>
+<script src="https://unpkg.com/vue@2.5.17"></script>
+
+<div id="app">
+    <!-- 定義したカスタムディレクティブ -->
+    <img v-fallback-image src="./logo2.png">
+</div>
+
+<script>
+    Vue.directive('fallback-image',{
+        bind: function(el){
+            el.addEventListener('error', function(){
+                // 画像のロードに失敗したらじっこうされる処理
+                el.src = 'https://jp.vuejs.org/images/logo.png'
+            })
+        }
+    })
+
+    new Vue({
+        el: '#app'
+    })
+</script>
