@@ -11,3 +11,4 @@ testsContext.keys().forEach(testsContext)
 // you want coverage for.
 const srcContext = require.context('../../src', true, /^\.\/(?!.*(?:main|router)).*(\.js)?$/)
 srcContext.keys().forEach(srcContext)
+
