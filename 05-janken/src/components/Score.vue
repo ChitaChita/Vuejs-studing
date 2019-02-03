@@ -2,13 +2,10 @@
 <div id="score">
     <h2>せいせき</h2>
     <div>
-        <button type="button" v-on:click.prevent="dataReset">クリア</button>
+        <button type="button" v-on:click="dataReset">クリア</button>
     </div>
     <ul v-if="scores">
-        <li v-for="(score, i) of $parent.$data.scores">
-            <span>{{ (i+1) }}:</span>
-            {{ score.message }}
-        </li>
+        <li v-for="(score, index) in scores" :key="index">{{ score.msg }}</li>
     </ul>
 </div>
 </template>
@@ -17,14 +14,23 @@
 export default {
     name: 'scores',
 
-    props: ['scores'],
+    props: {
+        'scores': {
+            type: Array,
+            requrred: true
+        },
+        'resetStorage': {
+            type: Function,
+            requrred: true
+        }
+    },
 
     data () {
         return {}
     },
     methods: {
         dataReset() {
-            this.$parent.$data.scores = []
+            this.resetStorage();
         }
     }
 }

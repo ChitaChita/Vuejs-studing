@@ -1,13 +1,13 @@
 <template>
 <div id="app">
-  <h1>じゃんけんゲーム</h1>
+  <h1>Vue.jsで、じゃんけんゲーム</h1>
   <ul class="nav">
     <li><router-link to="./game">ゲーム</router-link></li>
     <li><router-link to="./score">せいせき</router-link></li>
   </ul>
   <div class="inner">
     <transition name="fade">
-      <router-view scores="scores"></router-view>
+      <router-view v-bind:scores="scores" v-bind:saveData="saveData" v-bind:resetStorage="resetStorage"></router-view>
     </transition>
   </div>
 </div>
@@ -22,15 +22,8 @@ export default {
   
   data () {
     return {
-      localStorage: {
-        scores : localStorage.getItem('scores')
-      }
-    };
-  },
-
-  watch: {
-    scores : 'saveData'
-    
+      scores: []
+    }
   },
 
   components: {
@@ -38,9 +31,23 @@ export default {
     Score
   },
 
+  created () {
+    this.setScore();
+  },
+
   methods: {
-    saveData (scores) {
-      localStorage.setItem('scores', this.scores)
+    saveData (msg) {
+      localStorage.setItem('scores', JSON.stringify(this.msg));
+      console.log("Add localStorage");
+    },
+    setScore () {
+      this.scores = JSON.parse(localStorage.getItem('scores')) || [];
+      console.log("Set localStorage");
+    },
+    resetStorage () {
+      localStorage.removeItem('scores')
+      this.scores = []
+      console.log("Reset localStorage");
     }
   }
 }

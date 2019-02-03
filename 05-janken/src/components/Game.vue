@@ -24,7 +24,12 @@
 export default {
     name: 'game',
 
-    props: ['scores'],
+    props: {
+        'saveData': {
+            type: Function,
+            requrred: true
+        }
+    },
 
     data () {
         return {
@@ -74,6 +79,9 @@ export default {
 
             // 与えられた CSS セレクターに一致する文書中の要素のリストを示す静的な (生きていない) NodeList を返します。
             let btns = document.querySelectorAll('.button');
+            for (let btn of btns) {
+                btn.classList.add('is-selected');
+            }
 
             if (decision == 1) {
                 this.resultMessage = 'かち';
@@ -82,14 +90,12 @@ export default {
             } else {
                 this.resultMessage = 'まけ';
             }
-            this.$parent.$data.score.push({ message: this.resultMessage });
-
-            button.classList.add('is-selected');
+            console.log(this.resultMessage);
+            this.saveData( { 'msg': this.resultMessage } );
         },
         reset () {
             let btns = document.querySelectorAll('.button');
             for ( let btn of btns) {
-                btn.removeAttribute('disabled');
                 btn.classList.remove('is-selected');
             }
             this.resultMessage = '';
@@ -131,11 +137,6 @@ export default {
 }
 
 .is-selected {
-        background-color: transparent;
-        border: none;
-        cursor: pointer;
-        outline: none;
-        padding: 0;
-        appearance: none;
+    display: none;
 }
 </style>
