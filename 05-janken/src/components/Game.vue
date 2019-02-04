@@ -5,18 +5,20 @@
         <div><button v-on:click="start">もういちど</button></div>
     </div>
 
-    <div class="imgArea"><img v-bind:src="src" alt=""></div>
-    <ul>
-        <li>
-            <button v-on:click="onSelected" class="button" type="button" value="0">グー</button>
-        </li>
-        <li>
-            <button v-on:click="onSelected" class="button" type="button" value="1">チョキ</button>
-        </li>
-        <li>
-            <button v-on:click="onSelected" class="button" type="button" value="2">パー</button>
-        </li>
-    </ul>
+    <div class="janken">
+        <div class="imgArea"><img v-bind:src="src" alt=""></div>
+        <ul class="janken-select">
+            <li>
+                <button v-on:click="onSelected" class="button" type="button" value="0">グー</button>
+            </li>
+            <li>
+                <button v-on:click="onSelected" class="button" type="button" value="1">チョキ</button>
+            </li>
+            <li>
+                <button v-on:click="onSelected" class="button" type="button" value="2">パー</button>
+            </li>
+        </ul>
+    </div>
 </div>
 </template>
 
@@ -90,8 +92,7 @@ export default {
             } else {
                 this.resultMessage = 'まけ';
             }
-            console.log(this.resultMessage);
-            this.saveData( { 'msg': this.resultMessage } );
+            this.saveData( { msg: this.resultMessage } );
         },
         reset () {
             let btns = document.querySelectorAll('.button');
@@ -128,12 +129,39 @@ export default {
 </script>
 
 <style>
+.janken {
+    width: 30%;
+    height: 200px;
+    margin: 10px auto;
+    position:relative;
+}
+.janken-select {
+    display: block;
+    text-align: center;
+    list-style: none;
+    padding-left: 0;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+.janken-select li {
+    display: inline-block;
+    font-size: 2em;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    width: 70px;
+    margin: 5px
+}
+
 .imgArea img {
     position: absolute;
-    top: 50%;
-    left: 50%;
+    left: 35%;
     width: 120px;
     border: 1px solid #ccc;
+    margin: 10px auto;
 }
 
 .is-selected {

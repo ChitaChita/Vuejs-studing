@@ -37,7 +37,8 @@ export default {
 
   methods: {
     saveData (msg) {
-      localStorage.setItem('scores', JSON.stringify(this.msg));
+      this.scores.push(msg)
+      localStorage.setItem('scores', JSON.stringify(this.scores));
       console.log("Add localStorage");
     },
     setScore () {
@@ -71,11 +72,6 @@ body {
     font-family: Raleway, "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
 }
 
-li {
-  display: inline;
-  padding: 3px;
-}
-
 /* App */
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -86,6 +82,15 @@ li {
   margin-top: 60px;
 }
 
+.nav {
+  display: block;
+  margin: 10px auto;
+  width: 30%;
+  text-align: center;
+  list-style: none;
+  padding-left: 0;
+}
+
 .nav li {
   display: inline-block;
   font-size: 2em;
@@ -94,6 +99,8 @@ li {
   border-radius: 5px;
   border: 1px solid #ccc;
   background-color: #afa58d;
+  width: 130px;
+  margin: 5px;
 }
 
 </style>
