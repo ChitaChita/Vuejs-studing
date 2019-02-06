@@ -4,14 +4,13 @@
     <Slot v-bind:inputResult="inputResult" ></Slot>
     <Slot v-bind:inputResult="inputResult" ></Slot>
     <Slot v-bind:inputResult="inputResult" ></Slot>
-    <div v-if="modalflg">
-        モーダル表示
-    </div>
+    <Modal v-if="modalflg" v-bind:result="result"></Modal>
   </div>
 </template>
 
 <script>
 import Slot from '@/components/Slot.vue'
+import Modal from '@/components/Modal.vue'
 
 export default {
   name: 'app',
@@ -24,7 +23,8 @@ export default {
   },
 
   components: {
-    Slot
+    Slot,
+    Modal
   },
 
   watch: {
