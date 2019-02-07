@@ -1,13 +1,7 @@
 <template>
-    <transition>
-        <div>
-            <ul>
-                <li>{{ this.result[0] }}</li>
-                <li>{{ this.result[1] }}</li>
-                <li>{{ this.result[2] }}</li>
-            </ul>
-        </div>
-    </transition>
+<transition>
+
+</transition>
 </template>
 
 <script>

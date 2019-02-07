@@ -1,7 +1,7 @@
 <template>
     <div id="slot-form">
-        <input type="text" id="slot" v-bind:value="value">
-        <input type="button" value="停止" v-on:click="onSelected">
+        <input type="text" id="slot" v-model="value">
+        <input type="button" value="停止">
     </div>
 </template>
 
@@ -16,13 +16,6 @@ export default {
                 '0','1','2','3','4','5','6','7'
             ],
             timer: null,
-        }
-    },
-
-    props: {
-        'inputResult': {
-            type: Function,
-            requrred: true
         }
     },
 
@@ -52,13 +45,9 @@ export default {
         onSelected() {
             // setInterval()でセットしたタイマーを解除する
             clearInterval(this.timer);
-
-            // イベント発生源の要素取得
-            // let getElement = document.getElementById("slot");
-            let getElement = document.getElementById("slot");
-            let selectNum = parseInt(getElement.value, 10);
-
-            this.inputResult(selectNum);
+            
+            // 親へ値を渡す
+            this.$emit('slot-selected-value',this.value);
         }
     }
 }

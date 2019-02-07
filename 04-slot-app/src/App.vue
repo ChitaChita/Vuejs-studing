@@ -1,10 +1,9 @@
 <template>
   <div id="app">
       test
-    <Slot v-bind:inputResult="inputResult" ></Slot>
-    <Slot v-bind:inputResult="inputResult" ></Slot>
-    <Slot v-bind:inputResult="inputResult" ></Slot>
-    <Modal v-if="modalflg" v-bind:result="result"></Modal>
+    <Slot v-bind:slot-selected-value="inputResult"></Slot>
+    <Slot v-bind:slot-selected-value="inputResult"></Slot>
+    <Modal v-if="modalflg" v-bind:result="result" v-bind:close="offModal"></Modal>
   </div>
 </template>
 
@@ -30,9 +29,9 @@ export default {
   watch: {
       result() {
           console.log('データが追加されました。');
-          if ( this.result.length === 3) {
+          if ( this.result.length === 2) {
               this.onModal();
-              console.log('データが3件追加されました。');
+              console.log('データが2件追加されました。');
           }
       }
   },
