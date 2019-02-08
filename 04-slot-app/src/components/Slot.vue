@@ -1,7 +1,7 @@
 <template>
     <div id="slot-form">
         <input type="text" id="slot" v-model="value">
-        <input type="button" value="停止">
+        <input type="button" value="停止" v-on:click="onSelected">
     </div>
 </template>
 
@@ -19,10 +19,21 @@ export default {
         }
     },
 
-    created () {
-        this.start();
+    props: {
+        'stateflg': {
+            type: Boolean,
+            required: true
+        }
     },
 
+    watch: {
+        stateflg() {
+            if ( this.stateflg === true ){
+                this.start();
+            }
+        }
+    },
+    
     methods: {
         changeValue(number) {
             // Math.abs : 絶対値、null or empty時は0(ゼロ)
@@ -45,10 +56,13 @@ export default {
         onSelected() {
             // setInterval()でセットしたタイマーを解除する
             clearInterval(this.timer);
-            
+
             // 親へ値を渡す
             this.$emit('slot-selected-value',this.value);
         }
     }
 }
 </script>
+
+<style>
+</style>
