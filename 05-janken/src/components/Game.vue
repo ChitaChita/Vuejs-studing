@@ -113,7 +113,7 @@ export default {
                     break;
                 // チョキ
                 case 1:
-                    if (youHand === 0) { result = 1; }
+                    if (youHand === 2) { result = 1; }
                     if (youHand === 1) { result = 2; }
                     break;
                 // パー
