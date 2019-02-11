@@ -4,7 +4,8 @@
     <SlotBase v-on:slot-selected-value="inputResult" v-bind:stateflg="this.$store.getters.getStateflg"></SlotBase>
     <SlotBase v-on:slot-selected-value="inputResult" v-bind:stateflg="this.$store.getters.getStateflg"></SlotBase>
     <SlotBase v-on:slot-selected-value="inputResult" v-bind:stateflg="this.$store.getters.getStateflg"></SlotBase>
-    <Modal v-if="this.$store.getters.getModalflg" v-bind:result="result" v-on:close="offModal"></Modal>
+    <!-- <Modal v-if="this.$store.getters.getModalflg" v-bind:result="result" v-on:close="offModal"></Modal> -->
+    <Modal v-if="this.$store.getters.getModalflg" v-on:close="offModal">{{ this.result }}</Modal>
   </div>
 </template>
 

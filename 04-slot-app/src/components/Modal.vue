@@ -3,7 +3,7 @@
     <div class="modal-mask" >
       <div class="modal-wrapper" v-on:click.self="$emit('close')">
         <div class="modal-container">
-          {{ result }}
+          <slot />
         </div>
       </div>
     </div>
@@ -12,14 +12,17 @@
 
 <script>
 export default {
-  name: 'modal',
+  name: 'modal'
 
+/*
   props: {
     'result': {
       type: Array,
       required: true
     }
   }
+*/
+
 }
 </script>
 
@@ -50,5 +53,7 @@ export default {
   box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
   transition: all .3s ease;
   font-family: Helvetica, Arial, sans-serif;
+  color: red;
+  font-size: 20px
 }
 </style>
