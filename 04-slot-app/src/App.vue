@@ -2,16 +2,16 @@
   <div id="app">
     <h1>Vue.jsでスロット</h1>
     <ul class="nav">
-        <li><router-link to="./">ゲーム</router-link></li>
-        <li><router-link to="./score">せいせき</router-link></li>
+        <li><router-link to="./">Game</router-link></li>
+        <li><router-link to="./score">Score</router-link></li>
     </ul>
-    <router-view v-bind:scoreList="this.$store.state.result"></router-view>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'app',
+  name: 'app'
 }
 </script>
 
@@ -59,9 +59,12 @@ body {
   text-decoration: none;
   border-radius: 5px;
   border: 1px solid #ccc;
-  background-color: #86b45a;
-  width: 130px;
+  background-color: lightpink;
+  width: 150px;
   margin: 5px;
 }
 
+.nav li a {
+  display: block;
+}
 </style>

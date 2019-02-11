@@ -1,22 +1,34 @@
 <template>
-<div id="score">
-    <ul>
-        <li v-for="sc in scoreList" :key="sc.id">
-            {{sc.id}} {{ sc.slotValues }}
-        </li>
+  <div id="score">
+    <ul class="score-list">
+      <li class="score-list-item" v-for="sc in scoreList" :key="sc.id">
+        {{ sc.id+1 }}回目：{{ sc.slotValues }}
+      </li>
     </ul>
-</div>
+  </div>
 </template>
 
 <script>
 export default {
-    name: 'score',
-
-    props: {
-        'scoreList': {
-            Type: Object,
-            required: true
-        }
+  name: 'score',
+  data () {
+    return {
+      scoreList: this.$store.getters.getResult
     }
+  }
 }
 </script>
+
+<style>
+.core-list {
+  list-style: none;
+  padding-left: 0
+}
+.score-list-item {
+  display: block;
+  font-size: 2em;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px;
+}
+</style>

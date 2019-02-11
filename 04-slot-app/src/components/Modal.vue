@@ -1,25 +1,25 @@
 <template>
-<transition>
+  <transition>
     <div class="modal-mask" >
-        <div class="modal-wrapper" v-on:click.self="$emit('close')">
-            <div class="modal-container">
-                {{ result }}
-            </div>
+      <div class="modal-wrapper" v-on:click.self="$emit('close')">
+        <div class="modal-container">
+          {{ result }}
         </div>
+      </div>
     </div>
-</transition>
+  </transition>
 </template>
 
 <script>
 export default {
-    name: 'modal',
+  name: 'modal',
 
-    props: {
-        'result': {
-            type: Array,
-            required: true
-        }
+  props: {
+    'result': {
+      type: Array,
+      required: true
     }
+  }
 }
 </script>
 
@@ -51,5 +51,4 @@ export default {
   transition: all .3s ease;
   font-family: Helvetica, Arial, sans-serif;
 }
-
 </style>
