@@ -1,14 +1,12 @@
 <template>
-  <div id="cp-slot" class="slot-form">
-    <input id="slot-value" class="slot-view" type="text" v-model="value">
-    <input id="slot-button" class="slot-button" v-bind:disabled="!canStart" type="button" value="STOP" v-on:click="onSelected">
+  <div class="slot-form">
+    <input v-bind:id="slotvalue" class="slot-view" type="text" v-model="value">
+    <input class="slot-button" v-bind:disabled="!canStart" type="button" value="STOP" v-on:click="onSelected">
   </div>
 </template>
 
 <script>
 export default {
-  name: 'cp-slot',
-
   data () {
     return {
       value: '0',
@@ -17,6 +15,12 @@ export default {
       ],
       canStart: false,
       timer: null
+    }
+  },
+
+  computed: {
+    slotvalue () {
+      return 'slot-value-' + this._uid
     }
   },
 

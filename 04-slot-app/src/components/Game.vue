@@ -33,7 +33,7 @@ export default {
   watch: {
     result () {
       // SlotBaseコンポーネントの数を知る
-      let slots = document.querySelectorAll('.slot-view')
+      let slots = document.querySelectorAll('[id^=slot-value-]')
       // 全てのSlotBaseコンポーネントが動作完了時に実行する
       if (this.result.length === slots.length) {
         // resultの値をスロット順に入替
