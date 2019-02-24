@@ -1,0 +1,25 @@
+aws dynamodb put-item --table-name TestTable --item '{"CompanyName":{"S":"1"},"Name":{"S":"Jack"}}' --endpoint-url http://localhost:8000
+aws dynamodb get-item --table-name TestTable --key '{"CompanyName":{"S":"1"}}' --endpoint-url http://localhost:8000
+{
+    "Item": {
+        "Name": {
+            "S": "Jack"
+        }, 
+        "CompanyName": {
+            "S": "1"
+        }
+    }
+}
+
+aws dynamodb put-item --table-name TestTable --item '{"CompanyName":{"S":"B会社"},"Category":{"S":"Bカテゴリ"}}' --endpoint-url http://localhost:8000
+aws dynamodb get-item --table-name TestTable --key '{"CompanyName":{"S":"A会社"}}' --endpoint-url http://localhost:8000
+{
+    "Item": {
+        "Category": {
+            "S": "Bカテゴリ"
+        }, 
+        "CompanyName": {
+            "S": "B会社"
+        }
+    }
+}

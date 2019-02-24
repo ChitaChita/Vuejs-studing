@@ -1,0 +1,36 @@
+aws dynamodb create-table --table-name TestTable \
+    --attribute-definitions AttributeName=CompanyName,AttributeType=S \
+    --key-schema AttributeName=CompanyName,KeyType=HASH \
+    --provisioned-throughput ReadCapacityUnits=1,WriteCapacityUnits=1 \
+    --endpoint-url http://localhost:8000
+
+{{
+    "TableDescription": {
+        "TableArn": "arn:aws:dynamodb:ddblocal:000000000000:table/TestTable",
+        "AttributeDefinitions": [
+            {
+                "AttributeName": "CompanyName",
+                "AttributeType": "S"
+            }
+        ],
+        "ProvisionedThroughput": {
+            "NumberOfDecreasesToday": 0,
+            "WriteCapacityUnits": 1,
+            "LastIncreaseDateTime": 0.0,
+            "ReadCapacityUnits": 1,
+            "LastDecreaseDateTime": 0.0
+        },
+        "TableSizeBytes": 0,
+        "TableName": "TestTable",
+        "TableStatus": "ACTIVE",
+        "KeySchema": [
+            {
+                "KeyType": "HASH",
+                "AttributeName": "CompanyName"
+            }
+        ],
+        "ItemCount": 0,
+        "CreationDateTime": 1551016633.857
+    }
+}
+$

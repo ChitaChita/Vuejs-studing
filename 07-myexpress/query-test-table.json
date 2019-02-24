@@ -1,0 +1,17 @@
+aws dynamodb query \
+    --table-name TestTable \
+    --key-condition-expression "ForumName = A会社" \
+    --expression-attribute-values  '{":name":{"S":"Amazon DynamoDB"}}'
+
+// limitで特定の数だけデータ取得
+aws dynamodb scan \
+    --endpoint-url http://localhost:8000 \
+    --table-name TestTable \
+    --limit 1
+
+// limitで特定の数だけデータ取得
+aws dynamodb scan \
+    --endpoint-url http://localhost:8000 \
+    --table-name TestTable \
+    --expression-attribute-values '{"CompanyName":{"S":"Sci-Fi"}}' \
+    --page-size 2
