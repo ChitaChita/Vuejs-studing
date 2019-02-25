@@ -1,6 +1,7 @@
 aws dynamodb query \
+    --endpoint-url http://localhost:8000 \
     --table-name TestTable \
-    --key-condition-expression "ForumName = A会社" \
+    --key-condition-expression "ForumName = :CompanyName" \
     --expression-attribute-values  '{":name":{"S":"Amazon DynamoDB"}}'
 
 // limitで特定の数だけデータ取得

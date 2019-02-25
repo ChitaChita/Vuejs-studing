@@ -23,3 +23,14 @@ aws dynamodb get-item --table-name TestTable --key '{"CompanyName":{"S":"A会社
         }
     }
 }
+
+aws dynamodb put-item --table-name TestTable --item \
+'{
+    "Id": "001",
+    "Company": {"L": [ 
+        {"M":{"Id":{"N": "123"}}},
+        {"M":{"Name":{"S": "AAAA"}}}
+    ] }
+}' \
+--endpoint-url http://localhost:8000
+
